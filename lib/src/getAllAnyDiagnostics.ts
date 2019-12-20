@@ -76,8 +76,8 @@ export function getAllAnyDiagnostics(
   checker: ts.TypeChecker,
   sources: readonly ts.SourceFile[]
 ) {
-  let allVarDeclCount = 0
-  let allAnyDeclCount = 0
+  let totalVarDeclCount = 0
+  let totalAnyDeclCount = 0
   let allDiagnostics: string[][] = []
   sources.forEach(source => {
     const {
@@ -87,22 +87,22 @@ export function getAllAnyDiagnostics(
     // 得られたany診断メッセージ配列
     allDiagnostics.push(srcDiagnostics)
     // src に書かれている変数を加算
-    allVarDeclCount += srcVarDeclCount
+    totalVarDeclCount += srcVarDeclCount
   })
   let _allDiagnostics = allDiagnostics.flat()
   // 得られたany診断メッセージ数
-  allAnyDeclCount = _allDiagnostics.length
+  totalAnyDeclCount = _allDiagnostics.length
   // ログ出力用のメッセージを整形
-  const errorMessage = allAnyDeclCount
+  const errorMessage = totalAnyDeclCount
     ? _allDiagnostics.reduce((a, b) => `${a}\n${b}`)
     : null
   // 全変数推論の非anyカバレッジを0〜1で表す
-  const coverage = allVarDeclCount
-    ? 1 - allAnyDeclCount / allVarDeclCount
+  const coverage = totalVarDeclCount
+    ? 1 - totalAnyDeclCount / totalVarDeclCount
     : 1
   return {
-    allVarDeclCount,
-    allAnyDeclCount,
+    totalVarDeclCount,
+    totalAnyDeclCount,
     allDiagnostics: _allDiagnostics,
     errorMessage,
     coverage

@@ -1,18 +1,18 @@
 import { SourcesAnyDiagnostics } from './getAllAnyDiagnostics'
 export function log(diagnostics: SourcesAnyDiagnostics) {
   const {
-    allVarDeclCount,
-    allAnyDeclCount,
+    totalVarDeclCount,
+    totalAnyDeclCount,
     errorMessage,
     coverage
   } = diagnostics
   console.log('--------------------')
-  console.log(`allVarDeclCount: ${allVarDeclCount}`)
-  console.log(`allAnyDeclCount: ${allAnyDeclCount}`)
+  console.log(`totalVarDeclCount: ${totalVarDeclCount}`)
+  console.log(`totalAnyDeclCount: ${totalAnyDeclCount}`)
   console.log(`coverage: ${coverage}`)
   console.log('--------------------')
   console.log(errorMessage)
   console.log('--------------------')
-  const message = `こちらany警察👮‍♂️！${allAnyDeclCount}件のany変数を発見しました。`
+  const message = `こちらany警察👮‍♂️！${totalAnyDeclCount}件のany変数を発見しました。`
   throw message
 }
