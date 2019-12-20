@@ -2,7 +2,7 @@ import * as ts from 'typescript'
 import { createConfigFileHost } from './createConfigFileHost'
 // ______________________________________________________
 //
-export function createApplicationResources(
+export function createProgram(
   searchPath: string,
   configName = 'tsconfig.json'
 ) {
@@ -29,15 +29,8 @@ export function createApplicationResources(
     throw new Error('parsedCommandLine has errors.')
   }
   // ts.Program を作成
-  const program = ts.createProgram({
+  return ts.createProgram({
     rootNames: parsedCommandLine.fileNames,
     options: parsedCommandLine.options
   })
-  // ts.TypeChecker を取得
-  // ts.Node だけでは得られない、型推論内容の確認ができる
-  const checker = program.getTypeChecker()
-  return {
-    program,
-    checker
-  }
 }

@@ -1,17 +1,15 @@
 import * as ts from 'typescript'
 import * as path from 'path'
 import { removeUndefined } from './arrayFilters'
-import { createApplicationResources } from './createApplicationResources'
+import { createProgram } from './createProgram'
 import { getAllAnyDiagnostics } from './getAllAnyDiagnostics'
 import { log } from './log'
 // ______________________________________________________
 //
 // 対象となるプロジェクトのパス
 const srcDir = path.resolve('../app')
-const {
-  program, // ts.Program
-  checker // ts.TypeChecker
-} = createApplicationResources(srcDir)
+const program: ts.Program = createProgram(srcDir)
+const checker: ts.TypeChecker = program.getTypeChecker()
 
 // tsconfig から得られた src ファイル名配列をもとに
 // RootNode である ts.SourceFile の配列に変換
