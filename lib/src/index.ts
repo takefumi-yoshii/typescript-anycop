@@ -19,9 +19,9 @@ const sources: ts.SourceFile[] = program
   .filter(removeUndefined)
 
 if (sources.length) {
-  // 少しでも any があればログ出力する
   const diagnostics = getAllAnyDiagnostics(checker, sources)
   if (diagnostics.coverage !== 1) {
+    // 少しでも any があればログ出力する
     log(diagnostics)
   }
 }
