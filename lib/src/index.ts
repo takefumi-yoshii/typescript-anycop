@@ -6,16 +6,17 @@ import { getSourcesAnyDiagnostics } from './getSourcesAnyDiagnostics'
 import { log } from './log'
 // ______________________________________________________
 //
+// 対象となるプロジェクトのパス
 const srcDir = path.resolve('../app')
 const {
   program, // ts.Program
-  checker, // ts.TypeChecker
-  parsedCommandLine // ts.ParsedCommandLine
+  checker // ts.TypeChecker
 } = createApplicationResouces(srcDir)
 
 // tsconfig から得られた src ファイル名配列をもとに
 // RootNode である ts.SourceFile の配列に変換
-const sources: ts.SourceFile[] = parsedCommandLine.fileNames
+const sources: ts.SourceFile[] = program
+  .getRootFileNames()
   .map(fileName => program.getSourceFile(fileName))
   .filter(removeUndefined)
 

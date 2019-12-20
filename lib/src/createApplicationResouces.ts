@@ -38,7 +38,6 @@ export function createApplicationResouces(
   const checker = program.getTypeChecker()
   return {
     program,
-    checker,
-    parsedCommandLine
+    checker
   }
 }
