@@ -11,8 +11,7 @@ const srcDir = path.resolve('../app')
 const program: ts.Program = createProgram(srcDir)
 const checker: ts.TypeChecker = program.getTypeChecker()
 
-// tsconfig から得られた src ファイル名配列をもとに
-// RootNode である ts.SourceFile の配列に変換
+// ts.Program から ts.SourceFilep[] を捻出
 const sources: ts.SourceFile[] = program
   .getRootFileNames()
   .map(fileName => program.getSourceFile(fileName))
