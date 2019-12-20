@@ -24,8 +24,7 @@ function getAnyDiagnostics(
             const {
               line // any が見つかった行
             } = source.getLineAndCharacterOfPosition(start)
-            const location = `${source.fileName}:${line +
-              1}`
+            const location = `${source.fileName}:${line + 1}`
             const message = `👮‍♂️ <${child.getFullText()}`
             // ログ出力用の文字列
             const diagnostic = `${location} ${message}`
