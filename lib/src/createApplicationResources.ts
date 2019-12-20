@@ -2,7 +2,7 @@ import * as ts from 'typescript'
 import { createConfigFileHost } from './createConfigFileHost'
 // ______________________________________________________
 //
-export function createApplicationResouces(
+export function createApplicationResources(
   searchPath: string,
   configName = 'tsconfig.json'
 ) {

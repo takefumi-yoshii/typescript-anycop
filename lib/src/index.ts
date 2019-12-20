@@ -1,7 +1,7 @@
 import * as ts from 'typescript'
 import * as path from 'path'
 import { removeUndefined } from './arrayFilters'
-import { createApplicationResouces } from './createApplicationResouces'
+import { createApplicationResources } from './createApplicationResources'
 import { getSourcesAnyDiagnostics } from './getSourcesAnyDiagnostics'
 import { log } from './log'
 // ______________________________________________________
@@ -11,7 +11,7 @@ const srcDir = path.resolve('../app')
 const {
   program, // ts.Program
   checker // ts.TypeChecker
-} = createApplicationResouces(srcDir)
+} = createApplicationResources(srcDir)
 
 // tsconfig から得られた src ファイル名配列をもとに
 // RootNode である ts.SourceFile の配列に変換
