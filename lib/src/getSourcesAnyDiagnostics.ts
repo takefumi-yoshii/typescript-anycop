@@ -60,7 +60,7 @@ function getSourceAnyDiagnostics(
     srcDiagnostics.push(diagnostics)
     // src に書かれている変数を加算
     srcVarDeclCount += varDeclCount
-    // visit関数の再起呼び出し
+    // visit関数の再帰呼び出し
     ts.forEachChild(node, visit)
   }
   // ts.SourceFile を起点に実行
