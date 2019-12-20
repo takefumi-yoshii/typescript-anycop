@@ -19,14 +19,21 @@ const sources: ts.SourceFile[] = parsedCommandLine.fileNames
 
 if (sources.length) {
   const {
+    allVarDeclCount,
     allAnyDeclCount,
     errorMessage,
     coverage
   } = getSourcesAnyDiagnostics(checker, sources)
   // 少しでも any があればログ出力する
   if (coverage !== 1) {
-    console.log(errorMessage, coverage)
-    const message = `こちらany警察👮‍♂️${allAnyDeclCount}件のany変数を発見しました`
+    console.log('--------------------')
+    console.log(`allVarDeclCount: ${allVarDeclCount}`)
+    console.log(`allAnyDeclCount: ${allAnyDeclCount}`)
+    console.log(`coverage: ${coverage}`)
+    console.log('--------------------')
+    console.log(errorMessage)
+    console.log('--------------------')
+    const message = `こちらany警察👮‍♂️！${allAnyDeclCount}件のany変数を発見しました。`
     throw message
   }
 }
