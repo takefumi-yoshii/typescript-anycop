@@ -56,9 +56,9 @@ function getSourceAnyDiagnostics(
       source,
       node
     )
-    // node で発見した any診断メッセージ配列を push
+    // 収集した any診断を追加
     srcDiagnostics.push(diagnostics)
-    // src に書かれている変数を加算
+    // ファイル内変数宣言数を加算
     srcVarDeclCount += varDeclCount
     // visit関数の再帰呼び出し
     ts.forEachChild(node, visit)
