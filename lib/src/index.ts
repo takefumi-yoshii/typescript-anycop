@@ -11,7 +11,7 @@ const srcDir = path.resolve('../app')
 const program: ts.Program = createProgram(srcDir)
 const checker: ts.TypeChecker = program.getTypeChecker()
 
-// ts.Program から ts.SourceFilep[] を捻出
+// ts.Program から ts.SourceFile[] を捻出
 const sources: ts.SourceFile[] = program
   .getRootFileNames()
   .map(fileName => program.getSourceFile(fileName))
