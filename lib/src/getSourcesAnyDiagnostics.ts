@@ -108,3 +108,8 @@ export function getSourcesAnyDiagnostics(
     coverage
   }
 }
+// ______________________________________________________
+//
+export type SourcesAnyDiagnostics = ReturnType<
+  typeof getSourcesAnyDiagnostics
+>
