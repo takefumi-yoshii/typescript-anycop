@@ -14,20 +14,26 @@ function getAnyDiagnostics(
       if (ts.isVariableDeclaration(child)) {
         // 変数宣言数をインクリメント
         varDeclCount++
-        // ts.TypeChecker を利用し
-        // ts.Node(child) に推論されている型を調べる
-        const flags = checker.getTypeAtLocation(child).flags
-        // ts.TypeFlags は enum
-        if (flags === ts.TypeFlags.Any) {
-          const start = node.getStart()
-          const {
-            line // any が見つかった行
-          } = source.getLineAndCharacterOfPosition(start)
-          const location = `${source.fileName}:${line + 1}`
-          const message = `👮‍♂️ <${child.getFullText()}`
-          // ログ出力用の文字列
-          const diagnostic = `${location} ${message}`
-          diagnostics.push(diagnostic)
+        try {
+          // ts.TypeChecker を利用し
+          // ts.Node(child) に推論されている型を調べる
+          const { flags } = checker.getTypeAtLocation(child)
+          // ts.TypeFlags は enum
+          if (flags === ts.TypeFlags.Any) {
+            const start = node.getStart()
+            const {
+              line // any が見つかった行
+            } = source.getLineAndCharacterOfPosition(start)
+            const location = `${source.fileName}:${line +
+              1}`
+            const message = `👮‍♂️ <${child.getFullText()}`
+            // ログ出力用の文字列
+            const diagnostic = `${location} ${message}`
+            diagnostics.push(diagnostic)
+          }
+        } catch (err) {
+          // TODO: checker.getTypeAtLocation(child) で以下エラーがでる Node がある
+          // TypeError: Cannot read property 'flags' of undefined
         }
       }
     })
