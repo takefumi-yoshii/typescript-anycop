@@ -13,6 +13,6 @@ export function log(diagnostics: SourcesAnyDiagnostics) {
   console.log('--------------------')
   console.log(errorMessage)
   console.log('--------------------')
-  const message = `こちらany警察👮‍♂️！${totalAnyDeclCount}件のany変数を発見しました。`
+  const message = `こちらany警察👮‍♂️！${totalAnyDeclCount}件のanyをタイーホしました。`
   throw message
 }
