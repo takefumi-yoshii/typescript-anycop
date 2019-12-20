@@ -1,4 +1,4 @@
-import { SourcesAnyDiagnostics } from './getSourcesAnyDiagnostics'
+import { SourcesAnyDiagnostics } from './getAllAnyDiagnostics'
 export function log(diagnostics: SourcesAnyDiagnostics) {
   const {
     allVarDeclCount,

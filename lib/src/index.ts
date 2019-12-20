@@ -2,7 +2,7 @@ import * as ts from 'typescript'
 import * as path from 'path'
 import { removeUndefined } from './arrayFilters'
 import { createApplicationResources } from './createApplicationResources'
-import { getSourcesAnyDiagnostics } from './getSourcesAnyDiagnostics'
+import { getAllAnyDiagnostics } from './getAllAnyDiagnostics'
 import { log } from './log'
 // ______________________________________________________
 //
@@ -22,7 +22,7 @@ const sources: ts.SourceFile[] = program
 
 if (sources.length) {
   // 少しでも any があればログ出力する
-  const diagnostics = getSourcesAnyDiagnostics(checker, sources)
+  const diagnostics = getAllAnyDiagnostics(checker, sources)
   if (diagnostics.coverage !== 1) {
     log(diagnostics)
   }

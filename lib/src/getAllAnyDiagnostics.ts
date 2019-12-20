@@ -72,7 +72,7 @@ function getSourceAnyDiagnostics(
 }
 // ______________________________________________________
 //
-export function getSourcesAnyDiagnostics(
+export function getAllAnyDiagnostics(
   checker: ts.TypeChecker,
   sources: readonly ts.SourceFile[]
 ) {
@@ -111,5 +111,5 @@ export function getSourcesAnyDiagnostics(
 // ______________________________________________________
 //
 export type SourcesAnyDiagnostics = ReturnType<
-  typeof getSourcesAnyDiagnostics
+  typeof getAllAnyDiagnostics
 >
