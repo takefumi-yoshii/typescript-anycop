@@ -8,7 +8,11 @@ function getAnyDiagnostics(
 ) {
   let varDeclCount = 0
   let diagnostics: string[] = []
+  // 変数宣言は `ts.VariableDeclarationList` を起点に調べる
+  // var a, b = '' などの様に宣言できるため。
+  // const a = '' でも、VariableDeclarationList から絞る必要がある。
   if (ts.isVariableDeclarationList(node)) {
+    // var a, b などの場合にも向けて、イテレータで処理しなければいけない
     ts.forEachChild(node, child => {
       // 変数宣言であれば
       if (ts.isVariableDeclaration(child)) {
